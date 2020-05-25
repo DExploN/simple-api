@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "e1efe9d6-ee1a-4b52-a418-66394542083d",
+		"name": "simpleApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/products?page=2",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				},
+				"description": "Получение списка товаров. Присутствует пагинация через GET параметр page"
+			},
+			"response": []
+		},
+		{
+			"name": "/migrate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/migrate",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"migrate"
+					]
+				},
+				"description": "Миграция базы данных"
+			},
+			"response": []
+		},
+		{
+			"name": "/orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/orders",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"orders"
+					]
+				},
+				"description": "Получение списка всех заказов. Присутствует пагинация через GET параметр page"
+			},
+			"response": []
+		},
+		{
+			"name": "/bids",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/bids",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"bids"
+					]
+				},
+				"description": "Получение списка всех заявок"
+			},
+			"response": []
+		},
+		{
+			"name": "/orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n{\"id\": 1, \"quantity\": 2},\n{\"id\": 2, \"quantity\": 1}\n]"
+				},
+				"url": {
+					"raw": "http://{{host}}/orders",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"orders"
+					]
+				},
+				"description": "Добавить заказ"
+			},
+			"response": []
+		},
+		{
+			"name": "/bids",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "My name",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "My surname",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "21312312312",
+							"type": "text"
+						},
+						{
+							"key": "text_bid",
+							"value": "textbid",
+							"type": "text"
+						},
+						{
+							"key": "audio_bid",
+							"type": "file",
+							"src": "/home/pavel/Pictures/Screenshot from 2020-05-15 15-08-39.png"
+						},
+						{
+							"key": "photos[]",
+							"type": "file",
+							"src": "/home/pavel/Pictures/Screenshot from 2020-05-10 12-26-41.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://{{host}}/bids",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"bids"
+					]
+				},
+				"description": "Добавить заявку"
+			},
+			"response": []
+		},
+		{
+			"name": "/products/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host}}/products/1",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						"1"
+					]
+				},
+				"description": "Получение данных о товаре"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

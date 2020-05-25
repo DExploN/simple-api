@@ -1,0 +1,12 @@
+{
+    "name": "dexplon/simple-api",
+    "version": "1.0.0",
+    "type": "slim rest api project",
+    "require": {
+        "php": ">=7.1.0",
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.1",
+        "league/container": "^3.3",
+        "fzaninotto/faker": "^1.9"
+    }
+}
