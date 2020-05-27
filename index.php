@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Slim\Factory\AppFactory;
 
 require __DIR__ . '/vendor/autoload.php';
+define('ROOT_DIR', __DIR__);
 try {
     $container = new League\Container\Container;
 
@@ -15,6 +16,17 @@ try {
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         return $pdo;
     });
+
+    $protocol = stripos($_SERVER['SERVER_PROTOCOL'], 'https') === 0 ? 'https://' : 'http://';
+    $config = [
+        'product_dir' => '/uploads/products',
+        'audio_dir' => '/uploads/audios',
+        'photo_dir' => '/uploads/photos',
+        'host_name' => $protocol . $_SERVER['HTTP_HOST']
+    ];
+    $container->add('config', function () use ($config) {
+        return $config;
+    });
     AppFactory::setContainer($container);
     $app = AppFactory::create();
 
@@ -24,6 +36,6 @@ try {
     require_once 'middlewares.php';
 
     $app->run();
-}catch (\Throwable $throwable){
-    echo "Ошибка: ". $throwable->getMessage();
+} catch (\Throwable $throwable) {
+    echo "Ошибка: " . $throwable->getMessage();
 }
